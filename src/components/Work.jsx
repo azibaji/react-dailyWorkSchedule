@@ -3,8 +3,8 @@ import './work.css'
 const Work = ({id,title})=>
     {
         return (
-            <div className="work">
-                <p>{title}</p>
+            <div className="work" >
+                <p >{title}</p>
             </div>
         )
     }

@@ -7,3 +7,9 @@
     margin:10px;
     cursor: pointer;
 }
+.doneTask{
+text-decoration: line-through;
+}
+.undoneTask{
+text-decoration: none;;
+}

@@ -6,7 +6,7 @@ const Works =({works}) =>{
     return(
         <div className="works">
             {works.map(work =>{
-                return <Work title={work.title} id={work.id}/>
+                return <Work key = {work.id} title={work.title} id={work.id}/>
             })}
             </div>
     )
