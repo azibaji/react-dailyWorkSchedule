@@ -5,33 +5,32 @@ import './App.css'
 class App extends Component{
     state = {
         works:[
-            {id:"1", title:"Learn React"},
-            {id:"2", title:"Study English"},
-            {id:"3", title:"Learn js"},
-            {id:"4", title:"Take shower"}
+            {id:"1", title:"Learn React",status:'false'},
+            {id:"2", title:"Study English",status:'false'},
+            {id:"3", title:"Learn js",status:'false'},
+            {id:"4", title:"Take shower",status:'false'}
         ],
         // done:true,
-        // filtered:[],
-        task:''
+        // textDecoration:'none',
+        taskk:''
     }
-    // handleDoneTask = id =>{
-    //     const works = [...this.state.works]
-    //     const filteredworks = works.filter(work => work.id === id)
-    //     console.log('filtered', filteredworks)
-    //     for(let work in filteredworks){
-    //         filteredworks[work].done=true;
-    //     }
-    //     this.setState({done : !this.state.done})
-    //     this.setState({filtered: filteredworks})
-    // }
+    handleDoneTask=(id)=>{
+        const tasks=[...this.state.works]
+        const taskIndex = tasks.findIndex(p => p.id === id)
+        const task= tasks[taskIndex]
+        task.status=!task.status
+        tasks[taskIndex] = task;
+        this.setState({works : tasks})
+        // this.setState({textDecoration : 'line-through'})
+    }
     setTask =(event)=>{
-        this.setState({task:event.target.value})
+        this.setState({taskk:event.target.value})
     }
     addNewTask =()=>{
         const works = [...this.state.works]
         const work ={
             id : Math.floor(Math.random()*1000),
-            title : this.state.task,
+            title : this.state.taskk,
         }
         works.push(work)
         this.setState({works ,work : ""})
@@ -46,7 +45,7 @@ class App extends Component{
                     <input type="text" onChange={this.setTask}/>
                     <button onClick={this.addNewTask}>Add</button>
                 </div>
-                <Works works={works}/>
+                <Works works={works} doneTask={this.handleDoneTask} decoration={this.state.textDecoration}/>
             </div>
         )
         
